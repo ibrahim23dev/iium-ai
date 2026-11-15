@@ -2,11 +2,22 @@
   "name": "iium-ai",
   "version": "0.1.0",
   "private": true,
-  "scripts": { "dev": "next dev", "build": "next build", "start": "next start", "lint": "eslint .", "typecheck": "tsc --noEmit" },
+  "scripts": {
+    "dev": "node scripts/prisma-cli.mjs generate && next dev",
+    "build": "node scripts/prisma-cli.mjs generate && next build --webpack",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "node scripts/prisma-cli.mjs generate && tsc --noEmit",
+    "db:push": "node scripts/prisma-cli.mjs db push"
+  },
   "dependencies": {
+    "@auth/prisma-adapter": "^2.11.3",
+    "@google/genai": "^3.3.0",
+    "@prisma/client": "^6.19.1",
     "@tailwindcss/typography": "^0.5.16",
     "lucide-react": "^0.468.0",
     "next": "^16.0.0",
+    "next-auth": "5.0.0-beta.32",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-markdown": "^9.0.1",
@@ -20,6 +31,7 @@
     "@types/react-dom": "^19.0.2",
     "eslint": "^9.17.0",
     "eslint-config-next": "^16.0.0",
+    "prisma": "6.19.1",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.7.2"
   }

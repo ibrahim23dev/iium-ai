@@ -1,4 +1,4 @@
-export type ModelId = "default" | "openai" | "gemini" | "deepseek";
+export type ModelId = string;
 export type Attachment = { id: string; name: string; type: string; url: string; size: number };
 export type Message = {
   id: string;
