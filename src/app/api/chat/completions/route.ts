@@ -58,6 +58,7 @@ export async function POST(request: NextRequest) {
       } catch (error) {
         if (!abort.signal.aborted) {
           const normalized = geminiError(error);
+          console.error(normalized.diagnostic);
           // Errors after streaming begins are sent as a terminal SSE frame, avoiding raw provider details.
           controller.enqueue(encoder.encode(`\n\n[IIUM_ERROR]${JSON.stringify(normalized.message)}`));
           controller.close();
